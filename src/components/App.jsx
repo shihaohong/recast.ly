@@ -1,19 +1,33 @@
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    
     this.state = {
       videos: window.exampleVideoData,
-      videoInPlayer: window.exampleVideoData[0]
+      videoInPlayer: window.exampleVideoData[0],
     };
 
     this.handleVideoClick = this.handleVideoClick.bind(this);
   }
 
+  componentDidMount() {
+    // load up initial options
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      max: 5,
+      query: 'Hack Reactor'
+    };
 
-  handleVideoClick(video) {
+    // feed it into searchYoutube function
+    this.props.searchResults(options, this.handleVideoClick);
+  }
+
+  handleVideoClick(videos) { 
+    console.log('videos', videos);
     this.setState({
-      videoInPlayer: video
+      videos: videos,
+      videoInPlayer: videos[0]
     });
 
   }
