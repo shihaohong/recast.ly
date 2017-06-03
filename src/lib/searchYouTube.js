@@ -12,7 +12,7 @@ var searchYouTube = (options, callback) => {
       videoEmbeddable: 'true'
     },
     success: function(data) {
-      callback(data);
+      callback(data.items);
     },
   });
 };
