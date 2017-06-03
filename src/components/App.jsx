@@ -15,7 +15,7 @@ class App extends React.Component {
 
     this.handleVideosUpdate = this.handleVideosUpdate.bind(this);
     this.handleVideoUpdate = this.handleVideoUpdate.bind(this);
-    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleSearchSubmit = _.debounce(this.handleSearchSubmit.bind(this), 500);
   }
 
   componentDidMount() {
